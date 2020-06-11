@@ -1,0 +1,30 @@
+<!--
+templates/layout.html
+テンプレートファイル
+これが全てのWebページの雛形となる．
+
+Responder+Firestoreで作るブログシステム
+Copyright (c) RightCode Inc. All rights reserved.
+-->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <title>My Blog Name {{ title }}</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/highlight.css">
+</head>
+<body>
+<div class="container" style="flex-direction: column; min-height: 80vh">
+    {% block content %}
+    <!-- メインコンテンツ -->
+    {% endblock %}
+</div>
+{% include 'footer.html' %}
+</body>
+</html>

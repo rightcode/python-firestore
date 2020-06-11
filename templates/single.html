@@ -1,0 +1,66 @@
+<!--
+templates/single.html
+記事個別ページ
+
+Copyright (c) RightCode Inc. All rights reserved.
+-->
+
+{% extends "layout.html" %}
+{% block content %}
+
+{% include 'header.html' %}
+
+
+<div class="main-container">
+    <div class="article-main">
+
+        <!--   パンくずリスト   -->
+        <div class="breadcrumb">
+            <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+                <li itemprop="itemListElement" itemscope
+                    itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="/">
+                        <span itemprop="name">ホーム</span>
+                    </a>
+                    <meta itemprop="position" content="1" />
+                </li>
+                <li itemprop="itemListElement" itemscope
+                    itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="/category/{{ article['category'] }}">
+                        <span itemprop="name">{{ article['category'] }}</span>
+                    </a>
+                    <meta itemprop="position" content="2" />
+                </li>
+                <li itemprop="itemListElement" itemscope
+                    itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="./{{ article['slug'] }}">
+                        <span itemprop="name">{{ article['title'] }}</span>
+                    </a>
+                    <meta itemprop="position" content="3" />
+                </li>
+            </ol>
+        </div>
+
+        <!--   メイン   -->
+        <div class="title"><h2>{{ article['title'] }}</h2></div>
+            <div class="contents">
+                <div class="info">
+                {{ article['last_update'].strftime('%Y.%m.%d') }} <br>
+                Author: {{ article['author'] }}
+                </div>
+                <a href="/category/{{article['category']}}"><span class="category">🏷 {{ cat_name }}</span></a>
+
+                {% autoescape false%}
+                <div class="thumbnail">{{ article['thumbnail'] }}</div>
+            </div>
+
+        <div class="contents">
+            {{ article['contents'] }}
+            {% endautoescape%}
+        </div>
+    </div>
+
+    <!--   サイドメニュー  -->
+    {% include 'sidemenu.html' %}
+</div>
+{% endblock %}

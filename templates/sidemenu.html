@@ -1,0 +1,14 @@
+<div class="article-side">
+    <h3>What's New</h3>
+    <ul>
+        {% for wn in whats_new %}
+        <li><a href="/category/{{ wn['category'] }}/{{ wn['slug'] }}">📄 {{ wn['title'] }} - {{ wn['last_update'].strftime('%Y.%m.%d') }}</a></li>
+        {% endfor %}
+    </ul>
+    <h3>Category</h3>
+    <ul>
+        {% for cat in categories %}
+        <li><a href="/category/{{ cat['slug'] }}">🏷 {{ cat['name'] }}</a></li>
+        {% endfor %}
+    </ul>
+</div>

@@ -1,0 +1,54 @@
+<!--
+templates/edit.html
+記事編集ページ
+
+Copyright (c) RightCode Inc. All rights reserved.
+-->
+
+{% extends "layout.html" %}
+{% block content %}
+
+<br>
+<h1>My Blog Name | 管理者ページ</h1>
+<p>こんにちは，{{ name }} さん</p>
+
+<div class="main-container">
+    <div class="admin-main-menu">
+        <h2>投稿の編集</h2>
+        {% if article %}
+        <p><a href="/admin/article/delete?slug={{article['slug']}}" class="delete-btn">この記事を削除</a></p>
+        {% endif%}
+        <div class="edit">
+            <form action="/admin/{{action}}" method="post">
+                <input type="hidden" value="{{slug}}" name="original_slug">
+                <h3>サムネイル</h3>
+                <input type="text" name="thumbnail" value="{{ article['thumbnail'] }}" placeholder="![画像の代替テキスト](画像パス)">
+                <h3>タイトル</h3>
+                <input type="text" name="title" value="{{ article['title'] }}">
+                <h3>スラッグ</h3>
+                <input type="text" name="slug" value="{{ article['slug'] }}">
+                <h3>内容</h3>
+                <textarea name="contents" id="contents">{{ article['contents'] }}</textarea>
+                <h3>カテゴリ</h3>
+                {% for cat in categories %}
+                <input type="radio" name="category" value="{{cat['slug']}}"{% if cat['slug'] == article['category'] %} checked {% endif %}> {{cat['name']}}
+                {% endfor %}
+                <h3>タグ</h3>
+                {% for tag in tags %}
+                <input type="checkbox" name="tags[]" value="{{tag['slug']}}" {% if tag['slug'] in article['tags'] %} checked {% endif %}> {{tag['name']}}
+                {% endfor %}
+                <h3>詳細・抜粋</h3>
+                <textarea name="description" id="description">{{ article['description'] }}</textarea>
+                <p>
+                    <button type="submit" name="draft" value="draft" id="draft">下書き保存</button>
+                    <button type="submit" name="preview" value="preview" id="preview" formtarget="_blank">プレビュー </button>
+                    <button type="submit" name="release" value="release" id="release">公開</button>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    {% include 'admin-side.html'%}
+</div>
+
+{% endblock %}

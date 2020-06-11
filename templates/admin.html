@@ -1,0 +1,59 @@
+<!--
+templates/admin.html
+管理者ページ
+
+Copyright (c) RightCode Inc. All rights reserved.
+-->
+
+{% extends "layout.html" %}
+{% block content %}
+
+<br>
+<h1>My Blog Name | 管理者ページ</h1>
+<p>こんにちは，{{ name }} さん</p>
+
+<div class="main-container">
+    <div class="admin-main-menu">
+        <h2>投稿一覧</h2>
+        <table>
+            <tr>
+                <th style="width:  5%;">#</th>
+                <th style="width: 35%;">タイトル</th>
+                <th style="width: 10%;">作成者</th>
+                <th style="width: 10%;">スラッグ</th>
+                <th style="width: 10%;">カテゴリ</th>
+                <th style="width: 10%;">タグ</th>
+                <th style="width: 15%;">最終更新日</th>
+                <th style="width:  5%;">公開</th>
+            </tr>
+            {% for art in articles %}
+            <tr>
+                <td>{{ loop.index-1 }}</td>
+                <td><a href="/admin/edit/{{art['slug']}}">{{ art['title'] }}</a></td>
+                <td>{{ art['author'] }}</td>
+                <td>{{ art['slug'] }}</td>
+                <td>{{ art['category'] }}</td>
+                <td>
+                    {% for tag in art['tags'] %}
+                    {{ tag }},
+                    {% endfor %}
+                </td>
+                <td>{{ art['last_update'].strftime('%Y.%m.%d') }}</td>
+                <td>
+                    {% if art['released'] %}
+                    <a href="/category/{{ art['category'] }}/{{ art['slug'] }}">済</a>
+                    {% else %}
+                    未
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+
+        {% include 'admin-side.html'%}
+
+</div>
+
+{% endblock %}

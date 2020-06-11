@@ -1,0 +1,63 @@
+<IfModule mod_setenvif.c>
+
+BrowserMatch "\s360Spider$" bad_bot
+BrowserMatch "https?://(www\.)?cognitiveseo[\./]" bad_bot
+BrowserMatch ";\s?MJ12bot[ /;\+\)]" bad_bot
+BrowserMatch "^rogerbot[ /;\+]" bad_bot
+BrowserMatch "^Scrapy[ /;\+]" bad_bot
+BrowserMatch "^Screaming[ /;\+]" bad_bot
+BrowserMatch ";\s?SemrushBot[ /;\+\)]" bad_bot
+BrowserMatch ";\s?SMTBot[ /;\+\)]" bad_bot
+BrowserMatch ";\s?spbot[ /;\+\)]" bad_bot
+BrowserMatch "^vebidoobot$" bad_bot
+BrowserMatch "^YisouSpider$" bad_bot
+BrowserMatch "^ZoomBot[ /;\+]" bad_bot
+BrowserMatch ";\s?AhrefsBot[ /;\+\)]" bad_bot
+BrowserMatch ";\s?MegaIndex\.ru[ /;\+\)]" bad_bot
+BrowserMatch ";\s?aiHitBot[ /;\+\)]" bad_bot
+BrowserMatch ";\s?BLEXBot[ /;\+\)]" bad_bot
+BrowserMatch "^BOT[ /;\+]" bad_bot
+BrowserMatch "^CCBot[ /;\+]" bad_bot
+BrowserMatch "^CheckMarkNetwork[ /;\+]" bad_bot
+BrowserMatch ";\s?Cliqzbot[ /;\+\)]" bad_bot
+BrowserMatch ";\s?coccocbot\-web[ /;\+\)]" bad_bot
+BrowserMatch ";\s?DeuSu[ /;\+\)]" bad_bot
+BrowserMatch "^DomainStatsBot[ /;\+]" bad_bot
+BrowserMatch ";\s?DotBot[ /;\+\)]" bad_bot
+BrowserMatch "^Mozilla/[^ ]+ eCairn\-Grabber[ /;\+]" bad_bot
+BrowserMatch ";\s?Exabot[ /;\+\)]" bad_bot
+BrowserMatch ";\s?FatBot[ /;\+\)]" bad_bot
+BrowserMatch ";\s?GrapeshotCrawler[ /;\+\)]" bad_bot
+BrowserMatch ";\s?HaosouSpider[ /;\+\)]" bad_bot
+BrowserMatch ";\s?linkdexbot[ /;\+\)]" bad_bot
+BrowserMatch "^ltx71[ /;\+]" bad_bot
+BrowserMatch ";\s?Mail\.RU_Bot[ /;\+\)]" bad_bot
+BrowserMatch ";\s?memoryBot[ /;\+\)]" bad_bot
+BrowserMatch "^psbot[ /;\+]" bad_bot
+BrowserMatch "^roboto$" bad_bot
+BrowserMatch ";\s?SecurityResearch\.bot[ /;\+\)]" bad_bot
+BrowserMatch ";\s?SEOkicks\-Robot[ /;\+\)]" bad_bot
+BrowserMatch ";\s?SurdotlyBot[ /;\+\)]" bad_bot
+BrowserMatch ";\s?WBSearchBot[ /;\+\)]" bad_bot
+BrowserMatch "^Wotbox[ /;\+]" bad_bot
+BrowserMatch ";\s?yoozBot\-2\.2[ /;\+\)]" bad_bot
+
+  # Apache < 2.3
+  <IfModule !mod_authz_core.c>
+    Order Allow,Deny
+    Allow from all
+    Deny from env=bad_bot
+  </IfModule>
+
+  # Apache >= 2.3
+  <IfModule mod_authz_core.c>
+    <RequireAll>
+      Require all Granted
+      Require not env bad_bot
+    </RequireAll>
+  </IfModule>
+</IfModule>
+
+<Files ~ ".(txt|json)$">
+    deny from all
+</Files>

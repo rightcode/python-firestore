@@ -1,0 +1,48 @@
+<!--
+templates/media.html
+
+Copyright (c) RightCode Inc. All rights reserved.
+-->
+
+{% extends "layout.html" %}
+{% block content %}
+
+<br>
+<h1>My Blog Name | 管理者ページ</h1>
+<p>こんにちは，{{ name }} さん</p>
+
+<div class="main-container">
+    <div class="admin-main-menu">
+        <h2>メディアのアップロード</h2>
+
+        <form id="fileupload" action="/admin/upload" method="post" enctype="multipart/form-data">
+            <input name="file" type="file"/>
+            <button type="submit">アップロード</button>
+        </form>
+
+        <h2>メディア一覧</h2>
+        <div class="media">
+            {% for img in imgs %}
+            <a onclick="copyToClipboard({{loop.index}})">
+                <img src="/{{img}}" alt="{{img}}">
+            </a>
+            <input type="text" id="copy-img-path{{loop.index}}" value="![image_name](/{{img}})" readonly>
+            {% endfor %}
+        </div>
+    </div>
+
+        {% include 'admin-side.html'%}
+
+</div>
+<script>
+    function copyToClipboard(num) {
+        let copyTarget = document.getElementById("copy-img-path"+num);
+        copyTarget.select();
+        document.execCommand("Copy");
+        alert("以下の画像タグをコピーしました！\n" +
+            "このまま記事にCtrl+Vしてください。\n" +
+            copyTarget.value +
+            "\nもし，代替テキストを変更する場合は [] 内を変更してください！");
+    }
+</script>
+{% endblock %}

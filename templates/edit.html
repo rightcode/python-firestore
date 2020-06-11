@@ -1,0 +1,37 @@
+<!--
+templates/edit.html
+記事編集ページ
+
+Copyright (c) RightCode Inc. All rights reserved.
+-->
+
+{% extends "layout.html" %}
+{% block content %}
+
+<br>
+<h1>My Blog Name | 管理者ページ</h1>
+<p>こんにちは，{{ name }} さん</p>
+
+<div class="main-container">
+    <div class="admin-main-menu">
+        <h2>記事の編集</h2>
+        <div class="edit">
+            <form action="/admin/edit" method="post">
+                <h3>タイトル</h3>
+                <input type="text" name="title" value="{{ article['title'] }}">
+                <h3>スラッグ</h3>
+                <input type="text" name="slug" value="{{ article['slug'] }}">
+                <h3>内容</h3>
+                <textarea name="contents">
+                    {{ article['contents'] }}
+                </textarea>
+                <button type="submit" name="update">更新</button>
+            </form>
+        </div>
+    </div>
+
+        {% include 'admin-side.html'%}
+
+</div>
+
+{% endblock %}

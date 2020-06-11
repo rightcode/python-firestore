@@ -1,0 +1,39 @@
+<!--
+templates/single.html
+記事個別ページ
+
+Copyright (c) RightCode Inc. All rights reserved.
+-->
+
+{% extends "layout.html" %}
+{% block content %}
+
+<br>
+<h1>My Blog Name</h1>
+
+<div class="main-container">
+    <div class="article-main">
+
+        <!--   メイン   -->
+        <div class="title"><h2>{{ title }}</h2></div>
+            <div class="contents">
+                <div class="info">
+                YYYY.mm.dd<br>
+                Author: {{ author }}
+                </div>
+                <a href="/category/{{category}}"><span class="category">🏷 {{ category }}</span></a>
+                {% autoescape false%}
+                <div class="thumbnail">{{ thumbnail }}</div>
+            </div>
+
+        <div class="contents">
+
+            {{ contents }}
+            {% endautoescape%}
+        </div>
+    </div>
+
+    <!--   サイドメニュー  -->
+    {% include 'sidemenu.html' %}
+</div>
+{% endblock %}

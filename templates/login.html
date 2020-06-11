@@ -1,0 +1,25 @@
+<!--
+templates/login.html
+ログインページ
+
+Copyright (c) RightCode Inc. All rights reserved.
+-->
+
+{% extends "layout.html" %}
+{% block content %}
+
+<br>
+<h1>My Blog Name | ログイン</h1>
+<br>
+<div class="card login">
+    <form action="/admin" method="post">
+        <p>Email</p>
+        <input name="email" type="email">
+        <p>Password</p>
+        <input name="password" type="password">
+        <p class="error">{{ error }}</p>
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+<!--
+templates/index.html
+トップページ
+
+Copyright (c) RightCode Inc. All rights reserved.
+-->
+
+{% extends "layout.html" %}
+{% block content %}
+
+{% include 'header.html' %}
+
+<div class="main-container">
+    <div class="top">
+        <h2>{{ title }}</h2>
+        <div class="articles">
+            {% for art in articles %}
+            <a href="/category/{{art['category']}}/{{art['slug']}}">
+                <div class="single">
+                <p>
+                    {% autoescape false %}
+                    <div class="thumbnail">{{ thumbnails[loop.index - 1] }}</div>
+                    {% endautoescape %}
+                    {{ art['title'] }}<br>
+                    <span class="category">{{ art_categories[loop.index -1] }}</span>
+                    <div class="info">{{ art['last_update'].strftime('%Y.%m.%d') }}: {{ art['author'] }}</div>
+                </p>
+            </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

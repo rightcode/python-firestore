@@ -1,0 +1,42 @@
+<!--
+templates/category.html
+
+Copyright (c) RightCode Inc. All rights reserved.
+-->
+
+{% extends "layout.html" %}
+{% block content %}
+
+<br>
+<h1>My Blog Name | 管理者ページ</h1>
+<p>こんにちは，{{ name }} さん</p>
+
+<div class="main-container">
+    <div class="admin-main-menu">
+        <h2>カテゴリ一覧</h2>
+        <div class="edit-info">
+            <form action="/admin/category/update" method="post">
+                {% for cat in categories %}
+                名前 <input type="text" name="cat_name_{{cat['slug']}}" value="{{cat['name']}}"> :
+                スラッグ <input type="text" name="cat_slug_{{cat['slug']}}" value="{{cat['slug']}}">
+                <a href="/admin/category/delete?slug={{cat['slug']}}" class="delete-btn">×</a>
+                <br>
+                {% endfor %}
+                <button type="submit" value="update">カテゴリの更新</button>
+            </form>
+        </div>
+
+        <h2>カテゴリ新規追加</h2>
+        <div class="edit-info">
+            <form action="/admin/category/add" method="post">
+                名前 <input type="text" name="new_cat_name" value=""> :
+                スラッグ <input type="text" name="new_cat_slug" value=""> <br>
+                <button type="submit" value="update">カテゴリの追加</button>
+            </form>
+        </div>
+    </div>
+
+        {% include 'admin-side.html'%}
+
+</div>
+{% endblock %}

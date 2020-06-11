@@ -1,0 +1,478 @@
+@charset "utf-8";
+/*
+static/style.css
+スタイルシート
+
+Copyright (c) RightCode Inc. All rights reserved.
+*/
+
+body{
+    font: 14px/1.6 "Hiragino Kaku Gothic Pro",Osaka,"メイリオ","ＭＳ Ｐゴシック","MS PGothic",Verdana,Arial,sans-serif;
+    margin:0;
+    color:#313131;
+    background-color: #eeeeee;
+}
+hr{
+    border-top: 3px double #bbb;
+}
+h1{
+    padding: 5px 0;
+    color: #6594e0;/*文字色*/
+    border-bottom: dashed 2px #6594e0;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    opacity: 0.7;
+}
+img{
+    width: 100%;
+    height: auto;
+}
+.container{
+    max-width: 1300px;
+    margin:0 auto 2.0em auto;
+}
+.article h2{
+    padding: 0.5em;/*文字周りの余白*/
+    color: #494949;/*文字色*/
+    background: #c8d6ee;/*背景色*/
+    border-left: solid 5px #2b52cd;/*左線（実線 太さ 色）*/
+}
+.card{
+    max-width: 500px;
+    height: auto;
+    margin: auto;
+}
+.login{
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.2);
+}
+.login form{
+    margin: 50px 10px;
+}
+.login p{
+    margin: 10px 50px;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 125%;
+}
+.login input{
+    margin: 5px 50px;
+}
+button{
+    display: block;
+    border-style: none;
+    font-size: 1.4em;
+    background-color: #2b52cd;
+    border-radius: 5px;
+    color: white;
+    margin: 50px 50px;
+    padding: 10px 30px;
+}
+button:hover{
+    opacity: 0.7;
+}
+.error{
+    font-size: 0.5em;
+    color: #ce0404;
+}
+
+.main-container{
+    display: flex;
+    /*align-items: stretch;*/
+}
+.admin-main-menu{
+    width: 80%;
+}
+.admin-main-menu table{
+    width: 100%;
+    border-collapse:collapse;
+    margin:auto;
+}
+.admin-main-menu  td,th{
+    padding:10px;
+}
+.admin-main-menu  th{
+    color:#fff;
+    background: #657ccb;
+    border-right: 1px solid #416092;
+}
+.admin-main-menu  td{
+    text-align: center;
+    border-bottom:1px solid #c8d6ee;
+}
+
+.admin-side-menu{
+    width: 15%;
+    margin: 0 auto;
+}
+.admin-side-menu a{
+    text-decoration: none;
+    color: #1e366a;
+}
+.admin-side-menu a:hover{
+    opacity: 0.7;
+}
+.admin-side-menu h2{
+    color: #1e366a;
+    margin-top: 1.5em;
+    margin-bottom: 0;
+}
+.admin-side-menu ul{
+    color: #1e366a;
+    border-top: solid #1e366a 1px;
+    border-bottom: solid #1e366a 1px;
+    padding: 2.5em 0 0.5em 1.5em;
+    margin-top: 0.5em;
+}
+.admin-side-menu ul, li{
+    line-height: 1.5;
+    padding: 0.5em 1.5em;
+}
+
+
+.article-main{
+    width: 70%;
+    margin: 2.0em 0;
+}
+/* パンくずリスト*/
+.article-main .breadcrumb{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.article-main .breadcrumb li{
+    display: inline;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.article-main .breadcrumb li:after{
+    content: '>';
+    padding: 0 0.2em;
+    color: #555;
+}
+.article-main .breadcrumb li:last-child:after{
+    content: '';
+}
+.article-main .breadcrumb a{
+    text-decoration: none;
+    color: #555555;
+}
+.article-main .breadcrumb a:hover{
+    opacity: 0.7;
+}
+.article-main .thumbnail {
+    max-width: 600px;
+    margin: auto;
+}
+.article-main .title h2{
+    position: relative;
+    padding-left: 25px;
+}
+.article-main .title h2:before{
+     position: absolute;
+     content: '';
+     bottom: -3px;
+     left: 0;
+     width: 0;
+     height: 0;
+     border: none;
+     border-left: solid 15px transparent;
+     border-bottom: solid 15px rgb(119, 195, 223);
+}
+.article-main .title h2:after{
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 10px;
+    width: 100%;
+    border-bottom: solid 3px rgb(119, 195, 223);
+}
+.article-main .info{
+    color: gray;
+}
+.article-main .contents{
+    margin: 2.0em 1.5em;
+}
+.article-main .contents h2{
+    position: relative;
+    padding: 0.6em;
+    color: #fff;
+    background: #688cde;
+}
+.article-main .contents h3{
+    padding: 0.25em 0.5em;/*上下 左右の余白*/
+    color: #494949;/*文字色*/
+    background: transparent;/*背景透明に*/
+    border-left: solid 5px #7db4e6;/*左線*/
+}
+.article-main .category{
+    color: white;
+    background-color: #2b52cd;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+.article-main .category:hover{
+    opacity: 0.7;
+}
+.article-main table{
+    border-collapse:collapse;
+    width: 90%;
+    margin:0 auto;
+}
+.article-main th{
+    color:#fff;
+    background-color: #005ab3;
+    border:1px solid #999;
+}
+.article-main td{
+    border:1px solid #999;
+}
+.article-main td,th{
+    padding:10px;
+}
+.article-main pre{
+    padding: 10px 10px;
+}
+
+.article-side{
+    width: 20%;
+    margin: 2.0em auto;
+}
+.article-side h3{
+    background-color: #727b86;
+    padding: 5px 10px;
+    color: white;
+}
+.article-side ul{
+    padding: 0;
+    position: relative;
+}
+.article-side ul li{
+    line-height: 1.5;
+    padding: 0.5em;
+    list-style-type: none!important;/*ポチ消す*/
+}
+.article-side a{
+    font-size: 16px;
+    color: #314a89;
+    text-decoration: none;
+}
+.article-side a:hover {
+    opacity: 0.7;
+}
+
+.edit input[type=text]{
+    width: 90%;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 3px;
+    border: 2px solid #ddd;
+    box-sizing: border-box;
+}
+.edit #contents{
+    width: 90%;
+    min-height: 700px;
+    height: auto;
+    /*padding: 10px 15px;*/
+    font-size: 16px;
+    border-radius: 3px;
+    border: 2px solid #ddd;
+    box-sizing: border-box;
+}
+.edit #description{
+    width: 90%;
+    min-height: 200px;
+    height: auto;
+    /*padding: 10px 15px;*/
+    font-size: 16px;
+    border-radius: 3px;
+    border: 2px solid #ddd;
+    box-sizing: border-box;
+}
+.edit button{
+    display: inline-block;
+    margin: 1.0em 1.0em;
+}
+.edit #draft{
+    background-color: #555555;
+    color: #fff;
+    border-radius: 5px;
+}
+.edit #draft:hover{
+    opacity: 0.7;
+}
+.edit #preview{
+    background-color: #2b52cd;
+    color: #fff;
+    border-radius: 5px;
+}
+.edit #preview:hover{
+    opacity: 0.7;
+}
+.edit #release{
+    background-color: #2d8b58;
+    color: #fff;
+    border-radius: 5px;
+}
+.edit #release:hover{
+    opacity: 0.7;
+}
+
+.btn{
+    border: 1px solid #5a5a5a;
+    background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.media{
+    width: 100%;
+    background-color: #fff;
+    border: 2px solid #555555;
+    border-radius: 5px;
+}
+.media img{
+    height: 150px;
+    width: 150px;
+    object-fit: contain;
+    border: 1px solid gray;
+    background-color: white;
+    margin: 10px;
+}
+.media img:hover{
+    opacity: 0.7;
+}
+.media input{
+    opacity: 0;
+    position: absolute;
+}
+
+.edit-info input{
+    width: 20%;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 3px;
+    border: 2px solid #ddd;
+    box-sizing: border-box;
+}
+.warning{
+    color: darkorange;
+}
+.delete-btn{
+    background-color: #b6100f;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.delete-btn:hover{
+    opacity: 0.7;
+}
+
+.top{
+    width: 100%;
+    margin: 2.0em 0;
+}
+.articles{
+    width: 100%;
+}
+.articles .single{
+    display: inline-block;
+    vertical-align: top;
+    width: 22.5%;
+    height: 300px;
+    color: #333333;
+    border: 1px solid #333333;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px 10px;
+    margin: 5px 1px;
+
+}
+.articles .single:hover{
+    opacity: 0.7;
+}
+.article .single .thumbnail{
+    text-align: center;
+}
+.articles .single .thumbnail img{
+    height: 150px;
+    width: 100%;
+    margin: auto;
+    object-fit: contain;
+}
+.articles .single .category{
+    background-color: #2b52cd;
+    color: #fff;
+    border-radius: 3px;
+    padding: 2px 5px;
+}
+.articles .single .info{
+    font-size: smaller;
+    color: #888888;
+}
+
+header{
+    width: 100%;
+    height: 100px;
+}
+.header{
+    display: flex;
+    margin: 10px 10px;
+}
+.header .logo{
+    display: inline-block;
+    vertical-align: top;
+    width: 25%;
+    height: auto;
+    margin: 0 0;
+    padding: 0 10px;
+}
+.header .main-menu{
+    width: 75%;
+    margin: 0 0;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+}
+.header .main-menu ul li{
+    float: left;
+    width: 15%;
+    display: inline;
+    background-color: #1e366a;
+    color: #fff;
+    border: 1px solid #1f3057;
+}
+.header .main-menu ul li:hover{
+    opacity: 0.7;
+}
+.header .main-menu ul li a{
+    display: block;
+    color: #fff;
+}
+
+footer{
+    background-color: #1e366a;
+    color: white;
+    text-align: center;
+}
+footer .logo{
+    display: block;
+    width: 25%;
+    margin: auto;
+}
+footer ul{
+    display: flex;
+    justify-content: center;
+}
+footer ul li{
+    display: table-cell;
+    color: white;
+}
+footer ul li a{
+    display: block;
+    color: #fff;
+}

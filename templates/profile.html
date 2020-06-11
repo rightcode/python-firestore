@@ -1,0 +1,31 @@
+<!--
+templates/profile.html
+
+Copyright (c) RightCode Inc. All rights reserved.
+-->
+
+{% extends "layout.html" %}
+{% block content %}
+
+<br>
+<h1>My Blog Name | 管理者ページ</h1>
+<p>こんにちは，{{ name }} さん</p>
+
+<div class="main-container">
+    <div class="admin-main-menu">
+        <h2>プロフィール編集</h2>
+        <div class="edit-info">
+            <form action="/admin/profile/update" method="post">
+                <p>表示名　　　　　　　　　　 : <input type="text" name="displayName" value="{{ user_data['displayName'] }}"></p>
+                <p>メールアドレス　　　　　　 : <input type="text" name="email" value="{{ user_data['email'] }}"></p>
+                <p>新しいパスワード　　　　　 : <input type="password" name="password" value=""></p>
+                <p>新しいパスワード（確認用） : <input type="password" name="tmp_password" value=""></p>
+                <button type="submit" value="update">更新</button>
+            </form>
+      </div>
+    </div>
+
+        {% include 'admin-side.html'%}
+
+</div>
+{% endblock %}
